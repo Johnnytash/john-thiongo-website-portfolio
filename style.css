@@ -1,9 +1,24 @@
 /* RESET */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--background);
   padding-top: 32px;
   padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
 }
 
+header.scrolled {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+html {
+  scroll-behavior: smooth;
+}
 /* navbar */
 .navbar {
   display: flex;
@@ -43,13 +58,22 @@ header {
   animation: rotateUpDown 4s infinite;
 }
 
-
 @keyframes rotateUpDown {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(10deg); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-10deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .nav-list {
@@ -161,6 +185,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 112px;
+  padding-top: 80px;
 }
 
 .hero {
@@ -187,6 +212,15 @@ header {
 
 .hero-content h2 {
   font-size: 32px;
+  transform: translateX(-50px);
+  animation: slideIn 2s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .hero-content span {
@@ -316,10 +350,11 @@ header {
   align-items: center;
   justify-content: center;
   left: 17px;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   gap: 8px;
+  z-index: 999;
 }
-
 @media (max-width: 1024px) {
   .social-links {
     display: none;
@@ -600,7 +635,7 @@ header {
   margin-top: 8px;
 }
 
-.contact a{
+.contact a {
   color: var(--gray);
 }
 
@@ -723,20 +758,28 @@ footer {
 
 @media (max-width: 480px) {
   .nav-list {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--background);
-    position: absolute;
-    top: 80px;
+    position: fixed;
+    top: 60px;
     left: 0;
-    z-index: 1000;
+    right: 0;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--gray);
   }
-  .nav-list.show {
-    display: flex;
+
+  .hero-content h2 {
+    font-size: 25px;
   }
-  .burger-icon {
-    display: block;
-    cursor: pointer;
+
+  h2,
+  h3 {
+    font-size: 25px;
+  }
+
+  .education-content h3 {
+    font-size: 12px;
+  }
+
+  .main-container {
+    padding-top: 80px;
   }
 }
